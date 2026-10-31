@@ -19,6 +19,8 @@ function parseLine(text: string): RunLine | null {
 }
 
 export const readNight: ReadNight = (runsDir, night) => {
+  // The night comes from a URL; only a date may become a path.
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(night)) return null;
   const file = join(runsDir, `${night}.jsonl`);
   if (!existsSync(file)) return null;
   const rows = new Map<string, DigestRow>();

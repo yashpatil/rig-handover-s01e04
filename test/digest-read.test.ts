@@ -49,9 +49,13 @@ describe('readNight', () => {
       '[]',
       '',
     ];
-    writeFileSync(join(dir, 'n.jsonl'), lines.join('\n') + '\n');
-    const night = readNight(dir, 'n');
+    writeFileSync(join(dir, '2026-01-02.jsonl'), lines.join('\n') + '\n');
+    const night = readNight(dir, '2026-01-02');
     expect(night?.badLines).toBe(3);
     expect(night?.rows).toHaveLength(1);
+  });
+
+  it('returns null for a night that is not a date', () => {
+    expect(readNight('runs', '../package')).toBeNull();
   });
 });
