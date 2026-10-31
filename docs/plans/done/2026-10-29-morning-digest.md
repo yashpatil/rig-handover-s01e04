@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-10-31
 ---
 
 # Morning digest
@@ -77,3 +78,18 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Done needs | Worker | Total execution time | Total time taken | Closed |
+|---|-------|-----------|-----------|--------|----------------------|------------------|--------|
+| 1 | Digest types | — | — | claude-code · opus-5.5 · low | ~2 min | 1 min | 2026-10-31 |
+| 2 | Run log reader | #1 | — | claude-code · opus-5.5 · medium | ~1 min | 3 min | 2026-10-31 |
+| 3 | Digest page | #1 | #2 | claude-code · sonnet-5.5 · medium | ~1 min | 6 min | 2026-10-31 |
+| 4 | Digest JSON | #1 | #2, #3 | claude-code · sonnet-5.5 · medium | ~30 s | 6 min | 2026-10-31 |
+| 5 | Board links | #1 | #2, #3 | claude-code · sonnet-5.5 · medium | ~45 s | 6 min | 2026-10-31 |
+| 6 | Route tests | #1 | #2, #3, #4 | claude-code · sonnet-5.5 · medium | ~40 s | 6 min | 2026-10-31 |
+| 7 | Preview for review | #3, #6 | — | claude-code · opus-5.5 · low | ~3 min | 18 min | 2026-10-31 |
+| 8 | Clean up | #7 | review in | claude-code · opus-5.5 · low | see #8 | see #8 | 2026-10-31 |
+
+#7 was first closed when the link was sent, before the reviewer looked; it was reopened and closed again once the review was in. "Done when: the link is sent" was too weak a condition for a review step.
