@@ -37,6 +37,7 @@ export const readNight: ReadNight = (runsDir, night) => {
         owner: line.owner,
         runs: 1,
         retries: line.status === 'retry' ? 1 : 0,
+        fails: line.status === 'fail' ? 1 : 0,
         lastStatus: line.status,
         lastError: line.error ?? null,
         firstAt: line.at,
@@ -46,6 +47,7 @@ export const readNight: ReadNight = (runsDir, night) => {
     }
     row.runs++;
     if (line.status === 'retry') row.retries++;
+    if (line.status === 'fail') row.fails++;
     row.lastStatus = line.status;
     row.lastAt = line.at;
     // ponytail: owner follows the latest line; a job that changes owner mid-night shows only the last one

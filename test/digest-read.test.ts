@@ -26,7 +26,7 @@ describe('readNight', () => {
       firstAt: '2026-10-29T01:30:00+01:00',
       lastAt: '2026-10-29T01:37:00+01:00',
     });
-    expect(byJob['notes/backup']).toMatchObject({ lastStatus: 'fail', lastError: 'quota exceeded' });
+    expect(byJob['notes/backup']).toMatchObject({ lastStatus: 'fail', fails: 1, lastError: 'quota exceeded' });
     expect(byJob['digest/render']).toMatchObject({ owner: null, lastError: null });
   });
 
