@@ -24,6 +24,31 @@ in a shell this agent can run.
 
 6. Record every issue URL from gh's output (not from memory) and reply with the list.
 
+## What every issue carries
+
+Set by the human on the morning-digest plan (2026-10-31). Label: `plan:<plan name>`. Body:
+
+```md
+Source: plan.md § <n>
+
+## Scope
+## Done when
+## Blocked by
+<issues that must be closed before work starts, or —>
+## Done needs
+<issues that must be closed before "Done when" can hold, or —>
+
+## Time
+
+| Total execution time | Total time taken |
+|---|---|
+| — | — |
+```
+
+The worker fills Time when it closes the issue: execution time is what the worker spent
+running; time taken is from opened to closed. A step that waits on someone else (a review)
+says so in Done needs and stays open until they confirm.
+
 Closing one, with the closing comment from AGENTS.md:
 
 ```sh
